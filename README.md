@@ -32,10 +32,32 @@ Parameter details:
  'Scientific Research',
  'Transportation']`
 
+## Example queries
+Input:
+
+`>  find_type Education`
+
+Output:
+
+ `[ 'Alltuition',
+  'BetterLesson',
+  'Cappex',
+  'College Board',
+  'ConnectEDU',
+  'eScholar LLC.',
+  'GreatSchools',
+  'How\'s My Offer?',
+  'Junyo',
+  'KidAdmit, Inc.' ]`
+
+`Number of companies: 10 `
+
 ## Usage & Requirements
 To run the program, use "node dataMiner.js".
 
-To run the included tests, use "node test.js"
+When you are done running your queries, exit with CTRL+C.
+
+To run the included tests, use "node test.js". Note: The test will then accept any input similarly to running the program itself. Use CTRL+C to exit the test.
 
 This project requires Node.js.
 
