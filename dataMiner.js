@@ -6,6 +6,7 @@ const rl = readline.createInterface({
   output: process.stdout,
   prompt: '> '
 });
+var companyData;
 
 var url = 'https://s3-us-west-2.amazonaws.com/bain-coding-challenge/data.json';
 
@@ -32,7 +33,7 @@ var makeRequest = (url) => {
 
 makeRequest(url)
 .then((data) => {
-  console.log(data.length);
+  companyData = data;
   rl.prompt();
   rl.on('line', (input) => {
     var searchType = input.split(' ')[0];
@@ -76,7 +77,7 @@ var locate = (data, query) => {
 
 var findBefore = (data, query) => {
   return data.reduce((acc, curr) => {
-    if (curr.year_founded <= query){
+    if (curr.year_founded && curr.year_founded <= query){
       acc.push(curr.company_name);
     }
     return acc;
@@ -85,7 +86,7 @@ var findBefore = (data, query) => {
 
 var findAfter = (data, query) => {
   return data.reduce((acc, curr) => {
-    if (curr.year_founded >= query){
+    if (curr.year_founded && curr.year_founded >= query){
       acc.push(curr.company_name);
     }
     return acc;
@@ -110,7 +111,6 @@ var findType = (data, query) => {
   }, []);
 }
 
-module.exports.data = data;
 module.exports.locate = locate;
 module.exports.findBefore = findBefore;
 module.exports.findAfter = findAfter;
